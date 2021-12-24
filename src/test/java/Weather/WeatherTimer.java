@@ -1,11 +1,11 @@
 package Weather;
-
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
+// таймер в процессе разработки
 public class WeatherTimer {
     public static Calendar date = new GregorianCalendar(2021, Calendar.JANUARY, 19,
             1, 40, 15);
