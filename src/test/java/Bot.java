@@ -24,7 +24,7 @@ class Bot extends TelegramLongPollingBot {
         if (update.getMessage().hasText()) {
 
             switch (update.getMessage().getText().toLowerCase()) {
-                case "/start": // тестовый вариант ответа
+                case "/start":
                     try {
                         execute(new SendMessage(chatId, "Привет, я помогу узнать температуру воздуха за окном." +
                                 " Для этого введи название города"));
@@ -71,7 +71,7 @@ class Bot extends TelegramLongPollingBot {
                     }
                     break;
 
-                case "пятница": // тестовый вариант ответа на день недели номер 5
+                case "пятница":
                     try {
                         execute(new SendMessage(chatId, "Это святой день. На 20 00 Баня. " +
                                 "Купить два лимона и пачку чая."));
@@ -88,7 +88,7 @@ class Bot extends TelegramLongPollingBot {
                     }
                     break;
 
-                default:
+                default: // прогноз погоды на указанные город
                     try {
                         execute(new SendMessage(chatId, Weather.weatherRequest(location)));
                     } catch (Exception e) {
