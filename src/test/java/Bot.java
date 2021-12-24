@@ -10,10 +10,6 @@ import java.io.Serializable;
 
 class Bot extends TelegramLongPollingBot {
 
-    @Override
-    public <T extends Serializable, Method extends BotApiMethod<T>> T execute(Method method) throws TelegramApiException {
-        return super.execute(method);
-    }
 
     @Override
     public void onUpdateReceived(Update update) {
