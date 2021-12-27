@@ -17,7 +17,7 @@ abstract class WeatherIcons {
                 rus = " ❄";
                 break;
             case "Mist":
-                rus = " туманно";
+                rus = "";
                 break;
             case "Thunderstorm":
                 rus = " ⛈";

@@ -2,8 +2,6 @@ package Weather;
 
 import Weather.JSON.WeatherObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,23 +32,35 @@ public class Weather {
             response.append(inputLine);
         }
         in.close();
-        String condition = JSONReaderForCon(response);
-        int temperature = JSONReaderForTemp(response);
-        System.out.println(condition);
+        String country = JSONGetCountry(response);
+        String condition = JSONGetCondition(response);
+        int temperature = JSONGetTemp(response);
+        System.out.println(WeatherOnEnglish.checkEnglish(location));
+        if(WeatherOnEnglish.checkEnglish(location) == true)
+            return "Now "+temperature+ "° in "+location+
+                    " ("+country+")"+
+                    WeatherIcons.Icons(condition);
+        else
         return WeatherOnRussian.tempInRussian(temperature) +
                 WeatherOnRussian.firstUpperCase(location) +
+                " ("+country+")"+
                 WeatherIcons.Icons(condition);
     }
 
-    public static int JSONReaderForTemp(StringBuffer response) throws IOException {
+    public static int JSONGetTemp(StringBuffer response) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         WeatherObject object = mapper.readValue(response.toString(), WeatherObject.class);
         return Math.round(object.getMain().getTemp()) - 273;
     }
 
-    public static String JSONReaderForCon(StringBuffer response) throws IOException {
+    public static String JSONGetCondition(StringBuffer response) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         WeatherObject object = mapper.readValue(response.toString(), WeatherObject.class);
         return object.getWeather()[0].getMain();
+    }
+    public static String JSONGetCountry(StringBuffer response) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        WeatherObject object = mapper.readValue(response.toString(), WeatherObject.class);
+        return object.getSys().getCountry();
     }
 }
