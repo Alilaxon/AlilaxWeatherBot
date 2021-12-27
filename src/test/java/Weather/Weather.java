@@ -23,6 +23,9 @@ public class Weather {
         connection.setRequestMethod("GET");
         int responseCode = connection.getResponseCode();
         if (responseCode == 404) {
+            if (WeatherOnEnglish.checkEnglish(location) == true)
+                return "Sorry.I don't understand you.";
+            else
             return "Извени, я тебя не понимаю";
         }
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
