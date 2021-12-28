@@ -26,7 +26,7 @@ public class Weather {
             if (WeatherOnEnglish.checkEnglish(location) == true)
                 return "Sorry.I don't understand you.";
             else
-            return "Извени, я тебя не понимаю";
+            return "Извини, я тебя не понимаю";
         }
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
