@@ -1,6 +1,6 @@
 package Weather;
 
-import Weather.JSON.WeatherObject;
+import JSON.WeatherObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;

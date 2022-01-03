@@ -26,7 +26,7 @@ class Bot extends TelegramLongPollingBot {
                     }
                     break;
 
-                case "привет": // тестовый вариант ответа
+                case "/привет": // тестовый вариант ответа
                     try {
                         execute(new SendMessage(chatId, "Привет,как дела?"));
                     } catch (TelegramApiException e) {
