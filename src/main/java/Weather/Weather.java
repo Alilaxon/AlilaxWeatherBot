@@ -24,9 +24,10 @@ public class Weather {
         int responseCode = connection.getResponseCode();
         if (responseCode == 404) {
             if (WeatherOnEnglish.checkEnglish(location) == true)
-                return "Sorry.I don't understand you.";
+                return "Sorry. I don't understand you.\n Enter correct name of city.";
             else
-            return "Извини, я тебя не понимаю";
+            return "Извини, я тебя не понимаю."+
+                    "\n Введи корректное название города.";
         }
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
@@ -40,7 +41,8 @@ public class Weather {
         int temperature = JSONGetTemp(response);
         System.out.println(WeatherOnEnglish.checkEnglish(location));
         if(WeatherOnEnglish.checkEnglish(location) == true)
-            return "Now "+temperature+ "° in "+location+
+            return "Now "+temperature+ "° in "+
+                    WeatherOnRussian.firstUpperCase(location)+
                     " ("+country+")"+
                     WeatherIcons.Icons(condition);
         else
